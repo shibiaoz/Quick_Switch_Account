@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TIE BA FE HELPER </title>
+	<style type="text/css">
+		body,.body{
+			margin: 0;
+			padding: 0;
+			width: 200px;
+			height: 200px;
+		}
+		.p_a_20{
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		.w_160{
+			width: 160px;
+		}
+		.h_40{
+			height: 40px;
+			line-height: 40px;
+			border-radius: 4px;
+		}
+		.color_border{
+			border: solid 1px red;
+		}
+		.display-block{
+			display: block;
+		}
+		.btn,.add_btn{
+			  margin: 10px auto;
+			  width: 80px;
+			  height: 30px;
+			  background-color: #3681f1;
+			  line-height: 28px;
+			  text-align: center;
+			  color: #ffffff;
+			  border-style: none;
+			  font-family: "Microsoft YaHei";
+			  font-size: 16px;
+			  border-radius: 8px;
+			  cursor: pointer;
+		}
+		.text-center{
+			text-align: center;
+		}
+		.f-20{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="body">
+		<header class="title text-center">
+			<h3>Quick Switch Account</h3>
+		</header>
+		<section class="display-block p_a_20">
+			<select id="sel" class="sel w_160 h_40 f-20">
+		
+			</select>
+		</section>
+		<button class="btn j_Loginbtn display-block">快速切换</button>
+		<section>
+			<p>
+				<input type="text" placeholder="用户名" id="userName">
+				<input type="password" placeholder="密码" id="userPwd">
+				<button class="j_add_btn btn ">增加</button>	
+				<button class="j_remove_btn btn ">remove all</button>
+			</p>
+		</section>
+	
+	</div>
+	
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

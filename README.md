@@ -1,2 +1,14 @@
-# Quick_Switch_Account
-Quick_Switch_Account
+![。。。][1]
+**Quick_Switch_Account 小助手**
+## 使用场景 ##
+
+ - 开发过程中经常需要不同权限的账号切换
+ 
+## 主要功能 ##
+
+ - 账号切换
+
+ 
+ ## 解决的问题 ##
+ - 切换账号麻烦
+
