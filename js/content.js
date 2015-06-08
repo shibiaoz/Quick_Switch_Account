@@ -34,7 +34,7 @@ __init();
 function extensionInsertInto () {
 	var  e = document.createElement("script");
     e.type = "text/javascript";
-    e.charset = 'GBK';
+    //e.charset = 'GBK';
     e.src = chrome.extension.getURL('/js/'+'extensionInsertInto.js');
     document.head.appendChild(e);
 }

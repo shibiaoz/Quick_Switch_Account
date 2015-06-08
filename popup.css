@@ -1,0 +1,64 @@
+body,
+.body{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 200px;
+}
+.p_a_20{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.w_160{
+  width: 160px;
+}
+.h_40{
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+}
+.color_border{
+  border: solid 1px red;
+}
+.display-block{
+  display: block;
+}
+.btn,.add_btn{
+    margin: 10px auto;
+    width: 80px;
+    height: 30px;
+    background-color: #3681f1;
+    line-height: 28px;
+    text-align: center;
+    color: #ffffff;
+    border-style: none;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.switch-btn.btn {
+    margin-left: 20px;
+}
+.text-center{
+  text-align: center;
+}
+.f-20{
+  font-size: 20px;
+}
+input[type=text] {
+    padding: 4px 10px;
+    margin-bottom: 6px;
+    border: solid 1px rgb(185, 211, 186);
+    border-radius: 4px;
+    margin: auto;
+    margin-bottom: 8px;
+    height: 27px;
+    font-size: 14px;
+}
+button.btn {
+    margin-left: 10px;
+}
+.btn-wraper {
+    padding-left: 4px;
+}

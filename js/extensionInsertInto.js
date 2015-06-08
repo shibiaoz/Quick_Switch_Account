@@ -5,26 +5,69 @@ var chromelen = 0;
 var __ex_name = $.getPageData('user.user_name');
 var _knight_user = localStorage.getItem('_knight_user');
 var _knight_user_pwd = localStorage.getItem('_knight_user_pwd');
-console.log(_knight_user, _knight_user_pwd,"============");
 accountSwitch(true);
 function accountSwitch(debug) {
     _login();
     timeCheck();
-    // if(debug){
-    //      _login();
-    //     timeCheck();
-    // }else{
-    //     if(__ex_name != _knight_user){    
-    //         _login();
-    //         timeCheck();
-    //     }
-    // }
 }
 
 
 function _login () {
 	//_.Module.use('pcommon/component/LoginDialog', ['', '']);
-    _.Module.use('common/widget/LoginDialog');
+   // _.Module.use('common/widget/LoginDialog');
+   var chromeLoginExtensions = {
+        _config : {
+            apiOpt : {
+                staticPage : 'http://' + $.tb.location.getHost() + '/tb/static-common/html/pass/v3Jump.html',
+                product : 'tb',
+                charset : PageData.charset ? PageData.charset : 'GBK',
+                u : '',
+                memberPass : true,
+                safeFlag : 0
+            },
+            cache : false,
+            img : '',
+            //authsite: ["tsina", "renren", "qzone"],//暂时关闭
+            onLoginSuccess: function(args) {
+                args.returnValue=false;
+                $.stats.sendRequest('st_type=login_succeed&fr=tb0&st_pos=');
+                $.tb.location.reload();
+            },
+            onSubmitStart: function(args) {
+                $.stats.sendRequest('st_type=login_click&fr=tb0&st_pos=');
+            },
+            registerLink: 'https://passport.baidu.com/v2/?reg&tpl=tb&u=http://tieba.baidu.com',
+            tangram : true
+        },
+        initial : function(){
+            var _self = this;
+            var _loginImg = 1;
+            _self._config.apiOpt.u = $.tb.location.getHref();
+            _self._config.img = 'http://tb2.bdstatic.com/tb/static-common/img/passport/logindlg_pic'+_loginImg+'.png';
+            if(PageData){//快推账号
+                _self._config.apiOpt.isQuickUser = PageData.is_quick_user || 0;
+            }
+
+            (function($, undefined) {
+                //初始化并且展现
+                var time = (typeof Env != 'undefined' && Env.server_time)? Env.server_time : new Date().getTime();
+                $.JsLoadManager.use(["http://passport.bdimg.com/passApi/js/uni_login_wrapper.js?cdnversion=" + Math.floor(time/60000),"http://passport.bdimg.com/passApi/js/wrapper.js?cdnversion=" + Math.floor(time/60000)],
+                function(){
+                    if(!$.passPopInstance){
+                        $.passPopInstance = passport.pop.init(_self._config);
+                    }
+                    //替换缓存对象的配图
+                    $('#passport-login-pop').find('.pass-login-pop-img img').tbattr('src', _self._config.img);
+                    $.passPopInstance.show();
+                    // hunter打点
+                    setTimeout(function(){
+                        $("#passport-login-pop").find("input.pass-button-submit").tbattr("alog-alias","login");
+                        },1000);
+                },true,'utf-8');
+            })(window.jQuery);
+        }
+   }
+   chromeLoginExtensions.initial();
 }
 function fillIn () {
 	//debugger;
@@ -37,14 +80,11 @@ function fillIn () {
 	var $dialog = $('#passport-login-pop').find('.tang-foreground');//login dialog form
 	$dialog.find('input[name="userName"]').val(name);
 	$dialog.find('input[type="password"]').val(pwd);
-    window.aa = $dialog.find('input[name="userName"]');
-    window.bb = $dialog.find('input[type="password"]');
-    console.log(aa,bb,'========================');
     isFill = true;
     // sometimes trigger click ,it will show checking code
     setTimeout(function() {
-       $dialog.find('input[type="submit"]').trigger('click');
        isFill =  false;
+       $dialog.find('input[type="submit"]').trigger('click');
     }, 1000);
     //这个时间如果频繁的切换时间要设置大些
 	//$dialog.find('input[type="submit"]').trigger('click');
@@ -57,8 +97,6 @@ function timeCheck () {
         chromelen = $('#passport-login-pop').size();
         var subHtml = $('#passport-login-pop').html();
         if(chromelen > 0 && subHtml && subHtml.length > 0){
-            console.log(subHtml.length,'------------------',chromelen);
-            console.log(_knight_user, _knight_user_pwd,"============");
             clearInterval(timer);
             fillIn();
         }

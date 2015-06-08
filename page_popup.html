@@ -3,52 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>TIE BA FE HELPER </title>
-	<style type="text/css">
-		body,.body{
-			margin: 0;
-			padding: 0;
-			width: 200px;
-			height: 200px;
-		}
-		.p_a_20{
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-		.w_160{
-			width: 160px;
-		}
-		.h_40{
-			height: 40px;
-			line-height: 40px;
-			border-radius: 4px;
-		}
-		.color_border{
-			border: solid 1px red;
-		}
-		.display-block{
-			display: block;
-		}
-		.btn,.add_btn{
-			  margin: 10px auto;
-			  width: 80px;
-			  height: 30px;
-			  background-color: #3681f1;
-			  line-height: 28px;
-			  text-align: center;
-			  color: #ffffff;
-			  border-style: none;
-			  font-family: "Microsoft YaHei";
-			  font-size: 16px;
-			  border-radius: 8px;
-			  cursor: pointer;
-		}
-		.text-center{
-			text-align: center;
-		}
-		.f-20{
-			font-size: 20px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
 	<div class="body">
@@ -60,13 +15,13 @@
 		
 			</select>
 		</section>
-		<button class="btn j_Loginbtn display-block">快速切换</button>
+		<button class="btn j_Loginbtn display-block switch-btn">快速切换</button>
 		<section>
-			<p>
+			<p class="btn-wraper">
 				<input type="text" placeholder="用户名" id="userName">
-				<input type="password" placeholder="密码" id="userPwd">
-				<button class="j_add_btn btn ">增加</button>	
-				<button class="j_remove_btn btn ">remove all</button>
+				<input type="text" placeholder="密码" id="userPwd">
+				<button type="button" class="j_add_btn btn ">增加</button>	
+				<button type="button" class="j_remove_btn btn ">全部清除</button>
 			</p>
 		</section>
 	

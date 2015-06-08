@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Teiba_Fe_Helper",
+    "name": "Quick_Switch_Account",
     "version": "1.0",
-    "description": "快速切换账号！一些小功能的集成",
+    "description": "快速切换账号",
     "background": {
         "scripts": [
             "js/background.js"
